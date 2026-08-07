@@ -6,185 +6,295 @@
 <title>ReMa Apps</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
-    color:#333;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
 }
 
-header{
-    background:#0d47a1;
-    color:white;
-    text-align:center;
-    padding:60px 20px;
+header {
+    background: #0d47a1;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
 }
 
-header h1{
-    font-size:42px;
-    margin-bottom:10px;
+header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
-header p{
-    font-size:20px;
+header p {
+    font-size: 20px;
 }
 
-.container{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-    padding:40px 0;
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 0;
 }
 
-.card{
-    background:white;
-    border-radius:12px;
-    padding:25px;
-    margin-bottom:25px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .1);
 }
 
-.card h2{
-    color:#0d47a1;
-    margin-bottom:15px;
+.card h2 {
+    color: #0d47a1;
+    margin-bottom: 15px;
 }
 
-.apps{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.apps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-.app{
-    background:#fafafa;
-    border-left:5px solid #0d47a1;
-    padding:20px;
-    border-radius:8px;
+.app-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
 }
 
-.app h3{
-    margin-bottom:10px;
+.app {
+    position: relative;
+    height: 100%;
+    min-height: 145px;
+    background: #fafafa;
+    border-left: 5px solid #0d47a1;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
-footer{
-    background:#0d47a1;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
+.app-link:hover .app,
+.app-link:focus-visible .app {
+    transform: translateY(-3px);
+    background: #fff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .12);
 }
 
-a{
-    color:#0d47a1;
+.app-link:focus-visible {
+    outline: 3px solid #90caf9;
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.app h3 {
+    margin-bottom: 10px;
+}
+
+.store-label {
+    display: inline-block;
+    margin-top: 14px;
+    color: #0d47a1;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.coming-soon {
+    opacity: .72;
+    cursor: default;
+}
+
+.coming-soon .app {
+    border-left-color: #777;
+}
+
+.coming-soon-label {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #e9ecef;
+    color: #555;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+footer {
+    background: #0d47a1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.contact-link,
+.privacy-link {
+    color: #0d47a1;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 42px 18px;
+    }
+
+    header h1 {
+        font-size: 34px;
+    }
+
+    header p {
+        font-size: 17px;
+    }
+
+    .container {
+        width: 94%;
+        padding: 24px 0;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-
-<h1>ReMa Apps</h1>
-
-<p>Creating simple, reliable and useful Android applications.</p>
-
+    <h1>ReMa Apps</h1>
+    <p>Creating simple, reliable and useful Android applications.</p>
 </header>
 
-<div class="container">
+<main class="container">
 
-<div class="card">
+    <section class="card">
+        <h2>About ReMa Apps</h2>
+        <p>
+            ReMa Apps develops high-quality Android applications designed to improve
+            productivity, education, networking, and everyday life. Our mission is to
+            create simple, reliable, and user-friendly mobile applications that solve
+            real-world problems.
+        </p>
+    </section>
 
-<h2>About ReMa Apps</h2>
+    <section class="card">
+        <h2>Our Applications</h2>
 
-<p>
-ReMa Apps develops high-quality Android applications designed to improve productivity, education, networking, and everyday life. Our mission is to create simple, reliable, and user-friendly mobile applications that solve real-world problems.
-</p>
+        <div class="apps">
 
-</div>
+            <a
+                class="app-link"
+                href="https://play.google.com/store/apps/details?id=com.anthonyfrimpong.remabible"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download ReMa Bible from Google Play"
+            >
+                <article class="app">
+                    <h3>📖 ReMa Bible</h3>
+                    <p>Read the Holy Bible with multiple translations and useful study features.</p>
+                    <span class="store-label">View on Google Play →</span>
+                </article>
+            </a>
 
-<div class="card">
+            <a
+                class="app-link"
+                href="https://play.google.com/store/apps/details?id=com.anthonyfrimpong.biblememorytrainer"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download Bible Memory Trainer from Google Play"
+            >
+                <article class="app">
+                    <h3>🧠 Bible Memory Trainer</h3>
+                    <p>Memorize Scripture using quizzes, repetition, and progress tracking.</p>
+                    <span class="store-label">View on Google Play →</span>
+                </article>
+            </a>
 
-<h2>Our Applications</h2>
+            <div class="coming-soon" aria-label="ReMa Resume Builder coming soon">
+                <article class="app">
+                    <h3>📄 ReMa Resume Builder</h3>
+                    <p>Create professional resumes and export them as polished PDF documents.</p>
+                    <span class="coming-soon-label">Coming Soon</span>
+                </article>
+            </div>
 
-<div class="apps">
+            <a
+                class="app-link"
+                href="https://play.google.com/store/apps/details?id=com.remaapps.remapdfscanner"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download ReMa PDF Scanner from Google Play"
+            >
+                <article class="app">
+                    <h3>📷 ReMa PDF Scanner</h3>
+                    <p>Scan documents, create PDFs, merge files, and extract text using OCR.</p>
+                    <span class="store-label">View on Google Play →</span>
+                </article>
+            </a>
 
-<div class="app">
-<h3>📖 ReMa Bible</h3>
-<p>Read the Holy Bible with multiple translations and useful study features.</p>
-</div>
+            <a
+                class="app-link"
+                href="https://play.google.com/store/apps/details?id=com.remaapps.wifianalyzer"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download ReMa Wi-Fi Analyzer from Google Play"
+            >
+                <article class="app">
+                    <h3>📶 ReMa Wi-Fi Analyzer</h3>
+                    <p>Analyze Wi-Fi signal strength, network information, and troubleshoot connectivity.</p>
+                    <span class="store-label">View on Google Play →</span>
+                </article>
+            </a>
 
-<div class="app">
-<h3>🧠 Bible Memory Trainer</h3>
-<p>Memorize Scripture using quizzes, repetition, and progress tracking.</p>
-</div>
+            <a
+                class="app-link"
+                href="https://play.google.com/store/apps/details?id=com.remaapps.rema_qr_barcode_scanner"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download ReMa QR and Barcode Scanner from Google Play"
+            >
+                <article class="app">
+                    <h3>📱 ReMa QR &amp; Barcode Scanner</h3>
+                    <p>Scan and generate QR Codes, Code 128, UCC/EAN-128, and other popular barcode formats.</p>
+                    <span class="store-label">View on Google Play →</span>
+                </article>
+            </a>
 
-<div class="app">
-<h3>📄 ReMa Resume Builder</h3>
-<p>Create professional resumes and export them as polished PDF documents.</p>
-</div>
+            <div class="coming-soon" aria-label="ReMa Calculator coming soon">
+                <article class="app">
+                    <h3>🧮 ReMa Calculator</h3>
+                    <p>A modern calculator with scientific, graphing, and conversion tools.</p>
+                    <span class="coming-soon-label">Coming Soon</span>
+                </article>
+            </div>
 
-<div class="app">
-<h3>📷 ReMa PDF Scanner</h3>
-<p>Scan documents, create PDFs, merge files, and extract text using OCR.</p>
-</div>
+        </div>
+    </section>
 
-<div class="app">
-<h3>📶 ReMa Wi-Fi Analyzer</h3>
-<p>Analyze Wi-Fi signal strength, network information, and troubleshoot connectivity.</p>
-</div>
+    <section class="card">
+        <h2>Privacy Policies</h2>
+        <p>
+            View our
+            <a class="privacy-link" href="privacy.html">privacy policy</a>
+            for information about how ReMa Apps handles user data.
+        </p>
+    </section>
 
-<div class="app">
-<h3>📱 ReMa QR & Barcode Scanner</h3>
-<p>Scan and generate QR Codes, Code 128, UCC/EAN-128, and other popular barcode formats.</p>
-</div>
+    <section class="card">
+        <h2>Contact</h2>
+        <p>For questions, feedback, or support, please contact us at:</p>
+        <br>
+        <p>
+            <strong>Email:</strong>
+            <a class="contact-link" href="mailto:remaappsdev@gmail.com">
+                remaappsdev@gmail.com
+            </a>
+        </p>
+    </section>
 
-<div class="app">
-<h3>🧮 ReMa Calculator</h3>
-<p>A modern calculator with scientific, graphing, and conversion tools.</p>
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Privacy Policies</h2>
-
-<p>
-Privacy policies for each application will be published here.
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>Contact</h2>
-
-<p>
-For questions, feedback, or support, please contact us at:
-</p>
-
-<br>
-
-<p>
-<strong>Email:</strong> remaappsdev@gmail.com
-</p>
-
-</div>
-
-</div>
+</main>
 
 <footer>
-
-© 2026 ReMa Apps. All Rights Reserved.
-
+    © 2026 ReMa Apps. All Rights Reserved.
 </footer>
 
 </body>
