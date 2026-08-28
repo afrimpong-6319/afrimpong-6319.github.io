@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReMa Apps</title>
+<meta name="description" content="ReMa Apps - Faith driven Android applications built for everyday life.">
+
+<style>
+:root{
+  --blue:#064ca8;
+  --deep:#023b88;
+  --bright:#20a9ef;
+  --ink:#0d1b34;
+  --muted:#546176;
+  --line:#d9e2ee;
+  --bg:#f5f8fc;
+  --card:#ffffff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.45;
+}
+a{text-decoration:none;color:inherit}
+
+/* ---------- REUSABLE LOGO ---------- */
+.logo-svg{display:block}
+
+/* ---------- TOP NAV ---------- */
+.topbar{
+  height:82px;
+  background:#fff;
+  border-bottom:1px solid #e9edf3;
+  display:flex;
+  align-items:center;
+}
+.nav{
+  width:min(1040px,92%);
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand-logo{width:46px;height:46px}
+.brand-name{
+  font-size:22px;
+  font-weight:800;
+  color:#0b3f94;
+  line-height:1;
+}
+.brand-tag{
+  display:block;
+  margin-top:4px;
+  font-size:10px;
+  color:#434b58;
+  font-weight:600;
+}
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  font-weight:700;
+  font-size:13px;
+}
+.navlinks a{color:#0a1730}
+.navlinks a.active{
+  color:#fff;
+  background:#0b72e7;
+  border-radius:999px;
+  padding:9px 16px;
+  box-shadow:0 4px 10px rgba(11,114,231,.25);
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:300px;
+  overflow:hidden;
+  color:#fff;
+  text-align:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.24),rgba(255,255,255,0) 30%),
+    linear-gradient(180deg,#0773cf 0%,#0558b7 35%,#044a9d 70%,#03428e 100%);
+}
+.hero:before,
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.hero:before{
+  background:
+    radial-gradient(ellipse at 13% 72%,rgba(43,151,233,.65) 0 8%,transparent 9%),
+    radial-gradient(ellipse at 20% 60%,rgba(32,135,218,.58) 0 12%,transparent 13%),
+    radial-gradient(ellipse at 88% 66%,rgba(44,153,235,.65) 0 11%,transparent 12%),
+    radial-gradient(ellipse at 78% 74%,rgba(28,127,209,.60) 0 13%,transparent 14%),
+    radial-gradient(ellipse at 7% 88%,rgba(7,74,158,.92) 0 15%,transparent 16%),
+    radial-gradient(ellipse at 96% 88%,rgba(7,74,158,.92) 0 16%,transparent 17%);
+  opacity:.95;
+}
+.hero:after{
+  background:
+    linear-gradient(112deg,transparent 22%,rgba(255,255,255,.14) 38%,transparent 51%),
+    linear-gradient(72deg,transparent 38%,rgba(255,255,255,.10) 49%,transparent 62%);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:18px 18px 22px;
+}
+.hero-logo{
+  width:116px;
+  height:116px;
+  margin:0 auto -3px;
+  filter:drop-shadow(0 0 16px rgba(255,214,108,.42)) drop-shadow(0 8px 10px rgba(0,0,0,.25));
+}
+.hero h1{
+  font-size:clamp(45px,6vw,66px);
+  line-height:.98;
+  letter-spacing:-2px;
+  margin:0 0 10px;
+  text-shadow:0 3px 8px rgba(0,0,0,.26);
+}
+.hero h1 .rema{color:#fff}
+.hero h1 .apps-word{color:#3bc3ff}
+.hero-sub{
+  font-size:clamp(18px,2vw,22px);
+  text-shadow:0 2px 5px rgba(0,0,0,.22);
+}
+.badges{
+  margin-top:17px;
+  display:inline-flex;
+  align-items:center;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:0;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(124,164,205,.58);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14);
+}
+.badge{
+  padding:4px 14px;
+  font-weight:800;
+  font-size:14px;
+  white-space:nowrap;
+}
+.badge + .badge{border-left:1px solid rgba(255,255,255,.60)}
+
+/* ---------- MAIN ---------- */
+.wrap{
+  width:min(1040px,92%);
+  margin:auto;
+  padding:16px 0 28px;
+}
+.about{
+  margin-top:-1px;
+  background:#fff;
+  border:1px solid #dfe6ef;
+  border-radius:15px;
+  box-shadow:0 5px 16px rgba(15,45,85,.07);
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.about-logo{
+  width:62px;height:62px;flex:0 0 62px;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.15));
+}
+.about h2{
+  font-size:20px;
+  color:#0750b2;
+  margin-bottom:4px;
+}
+.about p{font-size:13px;color:#27364c}
+
+/* ---------- APPLICATIONS TITLE ---------- */
+.apps-heading{
+  text-align:center;
+  padding:13px 0 13px;
+}
+.small-cross{
+  width:36px;height:36px;
+  margin:auto;
+}
+.apps-heading h2{
+  color:#0b3f94;
+  font-size:29px;
+  line-height:1.1;
+}
+.apps-heading p{
+  color:#172238;
+  font-size:14px;
+  margin-top:4px;
+}
+
+/* ---------- APP GRID ---------- */
+.apps{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:11px;
+}
+.app-link,.app-static{display:block;height:100%}
+.app{
+  height:100%;
+  min-height:222px;
+  padding:13px 10px 11px;
+  text-align:center;
+  background:#fff;
+  border:1px solid #dce4ed;
+  border-radius:14px;
+  box-shadow:0 4px 13px rgba(18,47,82,.09);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  transition:.18s ease;
+}
+.app-link:hover .app{
+  transform:translateY(-4px);
+  box-shadow:0 9px 22px rgba(18,47,82,.15);
+}
+.app-icon{
+  width:60px;height:60px;
+  border-radius:14px;
+  margin-bottom:8px;
+  padding:1px;
+  box-shadow:0 4px 9px rgba(0,0,0,.18);
+}
+.app h3{
+  font-size:13px;
+  line-height:1.15;
+  color:#0d1421;
+  margin-bottom:8px;
+}
+.app p{
+  font-size:11px;
+  line-height:1.42;
+  color:#202a39;
+  margin-bottom:10px;
+}
+.store-label,
+.coming{
+  margin-top:auto;
+  font-size:10px;
+  font-weight:800;
+  border-radius:999px;
+  padding:6px 9px;
+}
+.store-label{
+  color:#075fcf;
+  background:#eef5ff;
+  border:1px solid #cfe0fa;
+}
+.coming{
+  color:#555;
+  background:#e8eaed;
+  border:1px solid #d4d7dc;
+}
+.app-static{opacity:.80}
+
+/* ---------- BOTTOM CARDS ---------- */
+.bottom-grid{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.info{
+  background:#fff;
+  border:1px solid #dfe6ef;
+  border-radius:14px;
+  padding:18px;
+  box-shadow:0 4px 13px rgba(18,47,82,.06);
+}
+.info h2{font-size:18px;color:#0750b2;margin-bottom:6px}
+.info p{font-size:13px;color:#354258}
+.info a{color:#075fcf;font-weight:800}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:linear-gradient(90deg,#03438e,#0752aa,#03438e);
+  color:#fff;
+  padding:16px 12px;
+}
+.footer-inner{
+  width:min(1040px,92%);
+  margin:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:12px;
+}
+.footer-cross{
+  font-size:19px;
+  font-weight:900;
+  border-left:1px solid rgba(255,255,255,.65);
+  border-right:1px solid rgba(255,255,255,.65);
+  padding:0 14px;
+}
+
+/* ---------- APP ICON COLORS ---------- */
+.red{background:linear-gradient(145deg,#8f0000,#c31316)}
+.purple{background:linear-gradient(145deg,#4711ad,#7c2ce0)}
+.blue{background:linear-gradient(145deg,#00348b,#0669ca)}
+.green{background:linear-gradient(145deg,#01782d,#13a044)}
+.orange{background:linear-gradient(145deg,#df4d00,#f88623)}
+.teal{background:linear-gradient(145deg,#006e70,#0a9b9e)}
+.gold{background:linear-gradient(145deg,#ac7000,#e5ad22)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1060px){
+  .apps{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .topbar{height:70px}
+  .navlinks{display:none}
+  .hero{min-height:280px}
+  .apps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bottom-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero-logo{width:98px;height:98px}
+  .badges{border-radius:18px}
+  .badge{font-size:12px;padding:4px 9px}
+  .about{align-items:flex-start}
+  .apps{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Single reusable ReMa cross + crown-of-thorns symbol.
+     It is embedded, so the website cannot lose the logo image. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="remaLogo" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="52" fill="#fff" fill-opacity=".06" stroke="#f5d08a" stroke-width="3"/>
+      <circle cx="60" cy="60" r="43" fill="none" stroke="#7b390e" stroke-width="5"/>
+      <circle cx="60" cy="60" r="40" fill="none" stroke="#d28a2e" stroke-width="2.2"/>
+
+      <!-- thorn branches -->
+      <g fill="none" stroke="#8b3f10" stroke-width="3.4" stroke-linecap="round">
+        <path d="M29 35C38 23 47 18 60 18c14 0 26 6 34 18"/>
+        <path d="M94 36c8 12 10 25 5 38-5 14-16 23-29 27"/>
+        <path d="M70 101c-14 4-28 1-38-8-10-9-15-22-13-35"/>
+        <path d="M19 58c1-10 4-17 10-24"/>
+      </g>
+
+      <!-- thorns -->
+      <g fill="#c46f1b">
+        <path d="M31 31l-2-12 9 9z"/><path d="M46 21l3-12 5 12z"/>
+        <path d="M67 19l6-11 1 13z"/><path d="M84 26l10-8-5 12z"/>
+        <path d="M98 43l12-4-9 9z"/><path d="M101 65l12 3-12 5z"/>
+        <path d="M93 84l9 9-12-4z"/><path d="M75 99l3 12-8-10z"/>
+        <path d="M52 102l-4 11-3-12z"/><path d="M33 94l-9 8 4-12z"/>
+        <path d="M20 78l-12 2 10-8z"/><path d="M17 53L6 48l12-2z"/>
+      </g>
+
+      <!-- glowing cross -->
+      <path d="M51 25h18v25h18v17H69v31H51V67H33V50h18z"
+            fill="#fff" stroke="#f4ddad" stroke-width="1.2"/>
+      <path d="M58 26h5v72h-5z" fill="#fff7db" fill-opacity=".65"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <nav class="nav">
+    <a class="brand" href="#home">
+      <svg class="brand-logo logo-svg" viewBox="0 0 120 120" aria-label="ReMa Apps cross and crown of thorns logo">
+        <rect width="120" height="120" rx="26" fill="#fff"/>
+        <use href="#remaLogo"/>
+      </svg>
+      <div>
+        <div class="brand-name">ReMa Apps</div>
+        <span class="brand-tag">Faith • Purpose • Excellence</span>
+      </div>
+    </a>
+
+    <div class="navlinks">
+      <a href="#home">⌂ Home</a>
+      <a class="active" href="#apps">▦ Our Apps</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <svg class="hero-logo logo-svg" viewBox="0 0 120 120" aria-label="Cross of Jesus surrounded by crown of thorns">
+      <use href="#remaLogo"/>
+    </svg>
+
+    <h1><span class="rema">ReMa</span> <span class="apps-word">Apps</span></h1>
+    <div class="hero-sub">Creating simple, reliable and useful Android applications.</div>
+
+    <div class="badges">
+      <span class="badge">🤖 Android Apps</span>
+      <span class="badge">❤️ Faith Driven</span>
+      <span class="badge">⭐ User Focused</span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <section class="about" id="about">
+    <svg class="about-logo logo-svg" viewBox="0 0 120 120" aria-hidden="true">
+      <rect width="120" height="120" rx="24" fill="#fff"/>
+      <use href="#remaLogo"/>
+    </svg>
+    <div>
+      <h2>About ReMa Apps</h2>
+      <p>
+        ReMa Apps develops high-quality Android applications designed to improve productivity,
+        education, networking, and everyday life. Our mission is to create simple, reliable,
+        and user-friendly mobile applications that solve real-world problems.
+      </p>
+    </div>
+  </section>
+
+  <section id="apps">
+    <div class="apps-heading">
+      <svg class="small-cross logo-svg" viewBox="0 0 120 120" aria-hidden="true"><use href="#remaLogo"/></svg>
+      <h2>Our Applications</h2>
+      <p>Explore our growing collection of useful Android apps</p>
+    </div>
+
+    <div class="apps">
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.anthonyfrimpong.remabible" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon red logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Bible</h3>
+          <p>Read the Holy Bible with multiple translations and useful study features.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.anthonyfrimpong.biblememorytrainer" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon purple logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>Bible Memory Trainer</h3>
+          <p>Memorize Scripture using quizzes, repetition, and progress tracking.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <div class="app-static">
+        <article class="app">
+          <svg class="app-icon blue logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Resume Builder</h3>
+          <p>Create professional resumes and export them as polished PDF documents.</p>
+          <span class="coming">COMING SOON</span>
+        </article>
+      </div>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.remapdfscanner" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon purple logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa PDF Scanner</h3>
+          <p>Scan documents, create PDFs, merge files, and extract text using OCR.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.wifianalyzer" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon green logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Wi-Fi Analyzer</h3>
+          <p>Analyze Wi-Fi signal strength, network information, and troubleshoot connectivity.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_qr_barcode_scanner" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon orange logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa QR &amp; Barcode Scanner</h3>
+          <p>Scan and generate QR Codes, Code 128, UCC/EAN-128, and other popular barcode formats.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <div class="app-static">
+        <article class="app">
+          <svg class="app-icon orange logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Calculator</h3>
+          <p>A modern calculator with scientific, graphing, and conversion tools.</p>
+          <span class="coming">COMING SOON</span>
+        </article>
+      </div>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_vehicle_maintenance" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon red logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Vehicle Maintenance</h3>
+          <p>Track vehicle service, maintenance history, fuel records, expenses, and reminders.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_money_manager" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon green logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Money Manager</h3>
+          <p>Manage expenses, income, bills, subscriptions, budgets, savings goals, and reports.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_unit_converter" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon blue logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Unit Converter</h3>
+          <p>Convert length, weight, temperature, area, volume, speed, power, data, and more.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_image_compressor" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon blue logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Image Compressor</h3>
+          <p>Compress images, reduce file size, and save storage space easily.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_home_maintenance" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon teal logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Home Maintenance</h3>
+          <p>Keep track of home maintenance tasks, schedules, service history, and reminders.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_medication_reminder" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon red logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Medication Reminder</h3>
+          <p>Set medication alarms, track refills, and stay on top of important medicines.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+      <a class="app-link" href="https://play.google.com/store/apps/details?id=com.remaapps.rema_warranty_vault" target="_blank" rel="noopener">
+        <article class="app">
+          <svg class="app-icon gold logo-svg" viewBox="0 0 120 120"><use href="#remaLogo"/></svg>
+          <h3>ReMa Warranty Vault</h3>
+          <p>Store warranties, receipts, expiry reminders, and useful warranty details.</p>
+          <span class="store-label">▶ View on Google Play</span>
+        </article>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="bottom-grid">
+    <section class="info">
+      <h2>Privacy Policies</h2>
+      <p>View our <a href="privacy.html">privacy policy</a> for information about how ReMa Apps handles user data.</p>
+    </section>
+
+    <section class="info" id="contact">
+      <h2>Contact</h2>
+      <p>For questions, feedback, or support, email <a href="mailto:remaappsdev@gmail.com">remaappsdev@gmail.com</a>.</p>
+    </section>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 ReMa Apps. All Rights Reserved.</span>
+    <span class="footer-cross">✝</span>
+    <span>Faith • Purpose • Excellence</span>
+  </div>
+</footer>
+
+</body>
+</html>
